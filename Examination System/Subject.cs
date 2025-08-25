@@ -32,6 +32,7 @@ namespace Examination_System
             SubjectID = subjectID;
             SubjectName = subjectName;
         }
+        //Will Display when exam started
         public override string ToString()
         {
             return $"Subject Id:{SubjectID}\nSubjecr Name:{SubjectName}\nExam Time:{Exam?.ExamTime}";
@@ -127,7 +128,7 @@ namespace Examination_System
             Console.Clear();
 
             //User want start the exam
-            Console.WriteLine(this.ToString());
+            Console.WriteLine(this.ToString());//display [Subject ToString]
             Console.WriteLine("-------------------------------");
             if (Exam == null)
             {
@@ -166,15 +167,17 @@ namespace Examination_System
                     StudentGrade += q.Mark;
                 }
             }
-
+            //Calc the time student taken for solve the exam from start
             DateTime endExam = DateTime.Now;
             TimeSpan duration = endExam - Exam.StartExam;
+
             Console.Clear();
             Console.WriteLine($"Exam Finished!\nTime taken: {duration.Minutes} minutes {duration.Seconds} seconds");
             Console.WriteLine($"Your Total Grade: {StudentGrade} from {ExamGrade}");
 
             //Sort Questions by Marks(ASC)
             Array.Sort(Exam.Questions);
+            //Display model answer
             Exam.ShowExam();
         }
     }

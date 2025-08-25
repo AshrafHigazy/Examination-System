@@ -12,18 +12,18 @@ namespace Examination_System.Exams
         public Final(DateTime startExam, float examTime, int numberOfQuestions, Question[] questions) : base(startExam, examTime, numberOfQuestions, questions)
         {
         }
-
+        //Method to display model answer of exam
         public override void ShowExam()
         {
             Console.WriteLine("\n--------------------[ Final Exam (Model Answer) ]--------------------\n");
             for (int i = 0; i < NumberOfQuestions; i++)
             {
                 Question q = Questions[i];
-                Console.WriteLine($"Qustion {i + 1}) {q.BodyOfQusetion}      Mark({q.Mark})");
+                Console.WriteLine($"Question {i + 1}) {q.BodyOfQusetion}      Mark({q.Mark})");
                 Console.WriteLine("------------------");
                 Console.WriteLine($"Your Answer is ({q.UserAnswer?.AnswerText})");
                 Console.WriteLine($"Right Answer is ({q.RightAnswer.AnswerText})");
-                //Check student grade is question
+                //Check student grade in question
                 float grade = (q.UserAnswer?.AnswerID == q.RightAnswer.AnswerID) ? q.Mark : 0;
                 Console.WriteLine($"Your grade= {grade}");
                 Console.WriteLine("----------------------------\n");

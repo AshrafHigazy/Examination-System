@@ -12,6 +12,8 @@ namespace Examination_System.Qustions
         : base(headerOfQusetion, bodyOfQusetion, mark, answersList, rightAnswer)
         {
         }
+
+        #region Method For ( Create MCQ Exam )
         public static MCQ CreateMCQQustion(int QNum)
         {
             Console.WriteLine($"-------- Question {QNum}) [MCQ] --------");
@@ -21,7 +23,7 @@ namespace Examination_System.Qustions
             {
                 Console.Write("Qustion body : ");
                 body = Console.ReadLine();
-            }while(string.IsNullOrWhiteSpace(body));
+            } while (string.IsNullOrWhiteSpace(body));
             Console.WriteLine("------------------");
             //Declare Choices
             Answer[] answers = new Answer[3];
@@ -32,7 +34,7 @@ namespace Examination_System.Qustions
                 {
                     Console.Write($"Enter choice {i + 1} : ");
                     text = Console.ReadLine();
-                }while(string.IsNullOrWhiteSpace(text));
+                } while (string.IsNullOrWhiteSpace(text));
                 answers[i] = new Answer(i + 1, text);
             }
             //Define id of right answer
@@ -45,14 +47,17 @@ namespace Examination_System.Qustions
             do
             {
                 Console.Write("\nMark of qustion = ");
-            } while (!float.TryParse(Console.ReadLine(),out mark) || mark <0);
+            } while (!float.TryParse(Console.ReadLine(), out mark) || mark < 0);
             return new MCQ("MCQ", body, mark, answers, rightAnswer);
         }
+        #endregion
+        #region Method for (Display questions and its choices) 
         public override void ShowQustion()
         {
             Console.Write($"{HeaderOfQusetion}: {BodyOfQusetion}   (Mark: {Mark})");
-            foreach(var answer in AnswersList)
+            foreach (var answer in AnswersList)
                 Console.WriteLine(answer);
-        }
+        } 
+        #endregion
     }
 }

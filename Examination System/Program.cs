@@ -4,6 +4,7 @@
     {
         static void Main(string[] args)
         {
+            //Using try-catch for unexpected errors
             try
             {
                 Subject subject = new Subject("CS241", "Object-Oriented Programming");

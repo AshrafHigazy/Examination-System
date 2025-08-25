@@ -12,6 +12,7 @@ namespace Examination_System.Qustions
         : base(headerOfQusetion, bodyOfQusetion, mark, answersList, rightAnswer)
         {
         }
+        #region Method to (Create T/F question)
         public static TrueOrFalse CreateTFQuestion(int QNum)
         {
             Console.WriteLine($"--- Question {QNum}) [True || False] ---");
@@ -45,12 +46,14 @@ namespace Examination_System.Qustions
             {
                 Console.Write("Enter number of correct answer [ 1)True | 2)False ]: ");
             } while (!int.TryParse(Console.ReadLine(), out correctIndex) || correctIndex < 1 || correctIndex > 2);
-        
+
             Answer rightAnswer = answers[correctIndex - 1];
 
             return new TrueOrFalse($"True/False Q{QNum})", body, mark, answers, rightAnswer);
         }
+        #endregion
 
+        #region Method for (Display T/F question)
         public override void ShowQustion()
         {
             Console.WriteLine($"{HeaderOfQusetion}: {BodyOfQusetion}  (Mark: {Mark})");
@@ -58,7 +61,8 @@ namespace Examination_System.Qustions
             {
                 Console.WriteLine(answer);
             }
-        }
+        } 
+        #endregion
 
     }
 }
